@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+</head>
+
+<body>
+    
+    <h1 align="center">This is home page</h1>
+    <table border="2" width="500px" align="center">
+        <thead align="center">
+            <tr>
+                <th>no</th>
+                <th>name</th>
+                <th>age</th>
+                <th>course</th>
+            </tr>
+        </thead>
+        <tbody align="center">
+            <% student.map((stu)=>{%>
+                <tr>
+                    <td>
+                        <%= stu.id %>
+                    </td>
+                    <td>
+                        <%= stu.name %>
+                    </td>
+                    <td>
+                        <%= stu.age %>
+                    </td>
+                    <td>
+                        <%= stu.course %>
+                    </td>
+                </tr>
+                <% })%>
+        </tbody>
+    </table>
+    <marquee behavior="slide" direction="right" color="red" loop="2">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti, ea voluptates? Nesciunt, deleniti voluptas. Distinctio eligendi iusto possimus vitae, in deserunt, cum ad cupiditate nostrum sequi officia quibusdam provident illum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates impedit optio, velit aliquid quas assumenda nobis ex ducimus facere porro laboriosam, maiores deserunt animi distinctio totam mollitia ipsam fugit sit.</p>
+    </marquee>
+</body>
+
+</html>
