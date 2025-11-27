@@ -10,15 +10,30 @@ connectDB()
 
 app.use(express.urlencoded({ extended: true }))
 
-app.get("/", (req, res) => {
-    return res.render("index")
+app.get("/", async (req, res) => {
+    const newStudent = await Student.find({})
+    return res.render("index", { newStudent })
 })
 
 app.post("/add-student", async (req, res) => {
-    console.log(req.body);
-    const data = req.body;
-    const newStudent = new Student(data)
-    await newStudent.save();
+    try {
+        const data = req.body;
+        const newStudent = new Student(data)
+        await newStudent.save();
+        return res.redirect("/")
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+app.get("/delete-student", async (req, res) => {
+    try {
+        const delId = req.query.deleteId
+        await Student.findByIdAndDelete(delId);
+        return res.redirect("/")
+    } catch (error) {
+        console.log(error.message);
+    }
 })
 
 
