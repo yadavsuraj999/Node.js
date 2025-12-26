@@ -4,8 +4,10 @@ const cors = require("cors");
 const app = express()
 const PORT = process.env.PORT
 
+
 const connectDb = require("./config/db.js");
 const studentRouter = require("./routes/studentRoute.js");
+const authRouter = require("./routes/authRoute.js");
 
 connectDb()
 app.use(cors({
@@ -15,6 +17,7 @@ app.use(cors({
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use("/",studentRouter)
+app.use("/api/auth",authRouter)
 
 app.listen(PORT,(err) => {
     if (err) {
