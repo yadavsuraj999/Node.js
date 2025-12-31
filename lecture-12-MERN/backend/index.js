@@ -11,6 +11,8 @@ const studentRouter = require("./routes/studentRoute.js");
 const authRouter = require("./routes/authRoute.js");
 const webAuthRouter = require("./routes/webAuthRouter.js");
 const profileRoute = require("./routes/profileRoute.js");
+const courseRouter = require("./routes/courseRoute.js");
+const protectRoute = require("./middleware/auth.js");
 
 connectDb()
 app.set("view engine", "ejs");
@@ -21,6 +23,7 @@ app.use(cors({
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(cookie())
+app.use("/course",protectRoute,courseRouter)
 app.use("/api",studentRouter)
 app.use("/auth",webAuthRouter)
 app.use("/", profileRoute)
